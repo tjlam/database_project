@@ -77,6 +77,7 @@ else:
 
     // Check for existing user with the new id
     // echo "start";
+    echo $_POST['newid'];
     $query = "SELECT COUNT(*) FROM users WHERE userid = ?;";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param('s', $_POST['newid']);
@@ -115,9 +116,7 @@ else:
     </head>
     <body>
     <p><strong>User registration successful!</strong></p>
-    <p>Your userid and password have been emailed to
-       <strong></strong>, the email address
-       you just provided in your registration form. To log in,
+    <p>To log in,
        click <a href="index.php">here</a> to return to the login
        page, and enter your new personal userid and password.</p>
     </body>
