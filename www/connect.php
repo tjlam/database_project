@@ -2,8 +2,8 @@
 // Function to obtain mysqli connection.
   function get_mysqli_conn()
   {
-    $dev_env = True;
-    $prod_env = False;
+    $dev_env = False;
+    $prod_env = True;
     if ($dev_env) {
       $dbhost = 'localhost:8889';
       $dbuser = 'root';
