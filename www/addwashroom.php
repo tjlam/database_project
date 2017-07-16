@@ -20,29 +20,30 @@
       $room_num = $_POST['roomnum'];
       $description = $_POST['description'];
       $gender = $_POST['gender'];
-      $rating = $_POST['rating'];
+      $rating = NULL;
       $id = $building . $room_num;
-      echo $id;
 
       // define new washroom object
-      $washroom = new Washroom($latitude, $longitude, $building, $room_num, $description, $gender, $rating);
+      // $washroom = new Washroom($latitude, $longitude, $building, $room_num, $description, $gender);
 
       // var_dump($washroom);
+      // TODO: check if washroom is already in database
+
 
       // add washroom to database
       $query = "
-        INSERT INTO `washrooms` (id, latitude, longitude, building, room_num, description, gender, rating)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        INSERT INTO `washrooms` (id, latitude, longitude, building, room_num, description, gender)
+        VALUES (?, ?, ?, ?, ?, ?, ?);
       ";
 
       $stmt = $mysqli->prepare($query);
 
-      $stmt->bind_param('sddssssi', $id, $latitude, $longitude, $building, $room_num, $description, $gender, $rating);
+      $stmt->bind_param('sddssss', $id, $latitude, $longitude, $building, $room_num, $description, $gender);
 
       if ($stmt->execute()) {
         echo 'successfully added washroom';
       } else {
-        echo 'error occured';
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
       }
       $mysqli->close();
     ?>

@@ -5,8 +5,8 @@ include("connect.php");
 
 if (!isset($_POST['submitok'])):
     // Display the user signup form
-    echo 'kevin is a fegit';
-    echo $_POST['submitok'];
+    // echo 'kevin is a fegit';
+    // echo $_POST['submitok'];
     ?>
 <!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -65,7 +65,7 @@ if (!isset($_POST['submitok'])):
 
     <?php
 else:
-    print_r($_POST);
+    // print_r($_POST);
     $mysqli = get_mysqli_conn();
     // Process signup submission
 
@@ -85,7 +85,7 @@ else:
     }
     $stmt->bind_result($result);
     $stmt = NULL;
-    // var_dump($result);
+    var_dump($result);
 
     if ($result) {
         error('A user already exists with your chosen userid.\\n'.
