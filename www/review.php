@@ -21,7 +21,7 @@
       if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
       }
-      $stmt->bind_result($w_id, $lat, $long, $building, $room_num, $description, $gender, $rating);
+      $stmt->bind_result($w_id, $lat, $long, $building, $room_num, $description, $gender);
       $stmt->fetch();
       $stmt = NULL;
       echo $building . " " . $room_num . " " . $description . " " . $gender . " " . $rating;
