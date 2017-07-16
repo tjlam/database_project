@@ -37,7 +37,7 @@ if (!isset($_POST['submitok'])):
             <p>Full Name</p>
         </td>
         <td>
-            <input name="newname" type="text" maxlength="12" size="25" />
+            <input name="newname" type="text" maxlength="20" size="25" />
             <font color="orangered" size="+1"><tt><b>*</b></tt></font>
         </td>
     </tr>
