@@ -1,3 +1,8 @@
+<?php
+  include_once 'accesscontrol.php';
+  include_once 'connect.php';
+  include_once 'washroomclass.php';
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,12 +33,17 @@
         return round(1000*$distance);
       }
       // list all washrooms in the washrooms database in closest to farthest order
-      include 'connect.php';
       $mysqli = get_mysqli_conn();
-      include 'washroomclass.php';
       $washrooms = array();
+      $query = "
+        SELECT *, ROUND(AVG(rev.rating)) as avg_rtg
+        FROM washrooms as wash
+        LEFT JOIN reviews as rev
+        on wash.id = rev.wid
+        group by wash.id;
+      ";
 
-      $results = $mysqli->query("SELECT * FROM `washrooms`");
+      $results = $mysqli->query($query);
 
       while ($row = $results->fetch_assoc()) {
         // echo 'in loop';
@@ -44,7 +54,7 @@
           $row['room_num'],
           $row['description'],
           $row['gender'],
-          $row['rating']
+          $row['avg_rtg']
         );
         // var_dump($washroom);
         //calculate and set distance from current loc. to washroom
@@ -67,12 +77,21 @@
       // print out all washrooms
 
       foreach ($washrooms as $w) {
-        echo $w->print_washroom();
+        echo  $w->print_washroom();
+        ?>
+        <form class="see-reviews" action="review.php" method="post">
+          <input type="hidden" name="wid" value=<?php echo $w->id ?>>
+          <input type="submit" value="see reviews">
+        </form>
+        <?php
       }
 
       $mysqli->close();
     ?>
     <a href="newwashroom.php"> Add a washroom </a>
-
+    <form class="see-reviews" action="review.php" method="post">
+      <input type="hidden" name="wid" value="">
+      <input type="submit" value="see reviews">
+    </form>
   </body>
 </html>

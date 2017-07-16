@@ -1,5 +1,5 @@
 <?php
-  include 'accesscontrol.php';
+  include_once 'accesscontrol.php';
 ?>
 <!DOCTYPE html>
 <html>

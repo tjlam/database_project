@@ -2,8 +2,8 @@
 // Function to obtain mysqli connection.
   function get_mysqli_conn()
   {
-    $dev_env = False;
-    $prod_env = True;
+    $dev_env = True;
+    $prod_env = False;
     if ($dev_env) {
       $dbhost = 'localhost:8889';
       $dbuser = 'root';
@@ -12,10 +12,11 @@
       $mysqli = new mysqli($dbhost, $dbuser, $dbpassword, $dbname);
     }
     if ($prod_env) {
-      $dbhost = 'mansci-db.uwaterloo.ca';
-      $dbuser = 'tj3lam';
-      $dbpassword = 'password';
-      $dbname = 'tj3lam_project';
+      $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+      $dbhost = $url["host"];
+      $dbuser = $url["user"];
+      $dbpassword = $url["pass"];
+      $dbname = substr($url["path"], 1);
       $mysqli = new mysqli($dbhost, $dbuser, $dbpassword, $dbname);
     }
     if ($mysqli->connect_errno)

@@ -1,3 +1,8 @@
+<?php
+  include_once 'accesscontrol.php';
+  include_once 'connect.php';
+  include_once 'washroomclass.php';
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,7 +11,6 @@
   </head>
   <body>
     <?php
-      include 'connect.php';
       $mysqli = get_mysqli_conn();
 
       // get washroom info from params
@@ -21,7 +25,6 @@
       echo $id;
 
       // define new washroom object
-      include 'washroomclass.php';
       $washroom = new Washroom($latitude, $longitude, $building, $room_num, $description, $gender, $rating);
 
       // var_dump($washroom);

@@ -1,5 +1,6 @@
 <?php
   //define washroom object
+
   class Washroom {
     public $id;
     public $longitude;
@@ -18,8 +19,12 @@
       $this->room_num = $room_num;
       $this->description = $description;
       $this->gender = $gender;
-      $this->rating = $rating;
       $this->id = $building . $room_num;
+      if ($rating == NULL) {
+        $this->rating = "No ratings yet";
+      } else {
+        $this->rating = $rating;
+      }
     }
 
     //print washroom

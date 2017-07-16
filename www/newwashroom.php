@@ -1,3 +1,4 @@
+<?php include_once 'accesscontrol.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -43,8 +44,6 @@
         <input id="description" type="text" name="description" value="">
         <label for="gender">Gender (M/F/O)</label>
         <input id="gender" type="text" name="gender" value="">
-        <label for="rating">Initial Rating</label>
-        <input id="rating" type="number" name="rating" value="">
         <input type="submit" value="Add Washroom">
       </form>
     </div>
