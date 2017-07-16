@@ -44,6 +44,9 @@
         } else {
           echo "error occured";
         }
+        ?>
+        <a href="nearby.php">Home</a>
+        <?php
       }
      ?>
 

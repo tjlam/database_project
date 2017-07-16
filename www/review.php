@@ -13,39 +13,54 @@
       $wid = $_POST['wid'];
       $mysqli = get_mysqli_conn();
 
-      //print info about the washroom
+      //retrieve info about the washroom
       echo "washroom: ";
-      $query = "SELECT * FROM `washrooms` WHERE id = ?";
+      $query = "
+        SELECT id, latitude, longitude, building, room_num, description, gender, ROUND(AVG(rev.rating)) as avg_rtg
+        FROM washrooms as wash
+        LEFT JOIN reviews as rev
+        on wash.id = rev.wid
+        where id = ?;
+      ";
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('s', $wid);
       if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
       }
-      $stmt->bind_result($w_id, $lat, $long, $building, $room_num, $description, $gender);
+      $stmt->bind_result($w_id, $lat, $long, $building, $room_num, $description, $gender, $rating);
       $stmt->fetch();
       $stmt = NULL;
-      echo $building . " " . $room_num . " " . $description . " " . $gender . " " . $rating;
-      echo '<br>';
-      //retrieve reviews of washroom
-      $query = "
-                SELECT usr.userid, review.rating, review.comment, review.timestamp
-                FROM reviews as review
-                INNER JOIN users as usr
-                ON usr.ID = review.uid
-                WHERE review.wid = ?
-                ORDER BY review.timestamp DESC ;
-              ";
-      $stmt = $mysqli->prepare($query);
-      $stmt->bind_param('s', $wid);
-      if (!$stmt->execute()) {
-        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-      }
-      $stmt->bind_result($user, $rating, $comment, $timestamp);
-      //print review of washroom
-      echo "reviews: " . '<br>';
-      while ($stmt->fetch()) {
-        echo $user . $rating . $comment . $timestamp;
+
+      if (!($rating == NULL)) {
+        //print washroom info
+        echo $building . " " . $room_num . " " . $description . " " . $gender . " " . $rating;
         echo '<br>';
+        //retrieve reviews of washroom
+        $query = "
+                  SELECT usr.userid, review.rating, review.comment, review.timestamp
+                  FROM reviews as review
+                  INNER JOIN users as usr
+                  ON usr.ID = review.uid
+                  WHERE review.wid = ?
+                  ORDER BY review.timestamp DESC ;
+                ";
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param('s', $wid);
+        if (!$stmt->execute()) {
+          echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+        $stmt->bind_result($user, $rating, $comment, $timestamp);
+        //print review of washroom
+        echo "reviews: " . '<br>';
+        while ($stmt->fetch()) {
+          echo $user . $rating . $comment . $timestamp;
+          echo '<br>';
+        }
+      } else {
+        $rating = "No ratings yet";
+        echo $building . " " . $room_num . " " . $description . " " . $gender . " " . $rating;
+        echo '<br>';
+        echo "reviews: Be the first to add a review!";
       }
 
     ?>
