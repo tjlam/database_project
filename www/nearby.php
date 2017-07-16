@@ -89,9 +89,5 @@
       $mysqli->close();
     ?>
     <a href="newwashroom.php"> Add a washroom </a>
-    <form class="see-reviews" action="review.php" method="post">
-      <input type="hidden" name="wid" value="">
-      <input type="submit" value="see reviews">
-    </form>
   </body>
 </html>

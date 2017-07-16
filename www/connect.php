@@ -3,7 +3,8 @@
   function get_mysqli_conn()
   {
     $dev_env = False;
-    $prod_env = True;
+    $prod_env = False;
+    if (!$dev_env) { $prod_env = True; }
     if ($dev_env) {
       $dbhost = 'localhost:8889';
       $dbuser = 'root';
