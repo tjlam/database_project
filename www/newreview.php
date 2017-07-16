@@ -45,7 +45,7 @@
           echo "error occured";
         }
         ?>
-        <a href="nearby.php">Home</a>
+        <a href="index.php">Home</a>
         <?php
       }
      ?>
