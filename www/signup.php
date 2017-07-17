@@ -89,7 +89,7 @@ else:
     $stmt->bind_result($result);
     $stmt->fetch();
     $stmt = NULL;
-    var_dump($result);
+    // var_dump($result);
 
     if ($result) {
         error('A user already exists with your chosen userid.\\n'.
