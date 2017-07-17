@@ -21,6 +21,9 @@
       $description = $_POST['description'];
       $gender = $_POST['gender'];
       $rating = NULL;
+      if ($room_num == '') {
+        $room_num = 0;
+      }
       $id = $building . $room_num;
 
       // define new washroom object
