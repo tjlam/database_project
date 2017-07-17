@@ -37,14 +37,20 @@
       ";
 
       $stmt = $mysqli->prepare($query);
-
       $stmt->bind_param('sddssss', $id, $latitude, $longitude, $building, $room_num, $description, $gender);
 
       if ($stmt->execute()) {
         echo 'successfully added washroom';
+        // give user +10 points for adding washroom
+        $stmt = NULL;
+        $query = " UPDATE users SET points = points + 10 WHERE userid = ?";
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param('i', $userid);
+        $stmt->execute();
       } else {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
       }
+
       $mysqli->close();
     ?>
 
