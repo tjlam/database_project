@@ -1,7 +1,7 @@
 <?php // signup.php
 
 include("common.php");
-include("connect.php");
+include_once "connect.php";
 
 if (!isset($_POST['submitok'])):
     // Display the user signup form
@@ -68,10 +68,9 @@ if (!isset($_POST['submitok'])):
 
     <?php
 else:
-    // print_r($_POST);
-    $mysqli = get_mysqli_conn();
-    // Process signup submission
 
+    // Process signup submission
+    //check if all fields are filled
     if ($_POST['newid']=='' or $_POST['newname']==''
       or $_POST['newpass']=='') {
         error('One or more required fields were left blank.\n'.
@@ -79,15 +78,16 @@ else:
     }
 
     // Check for existing user with the new id
-    // echo "start";
-    echo $_POST['newid'];
-    $query = "SELECT COUNT(*) FROM users WHERE userid = ?;";
+    $mysqli = get_mysqli_conn();
+    $query = "SELECT COUNT(*) FROM users WHERE userid = ?";
     $stmt = $mysqli->prepare($query);
-    $stmt->bind_param('s', $_POST['newid']);
+    $rc = $stmt->bind_param('s', $_POST['newid']);
     if (!$stmt->execute()) {
       echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
+
     $stmt->bind_result($result);
+    $stmt->fetch();
     $stmt = NULL;
     var_dump($result);
 

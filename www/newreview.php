@@ -41,6 +41,12 @@
         $stmt->bind_param('siis', $wid, $userid, $rating, $comment);
         if ($stmt->execute()) {
           echo "successfully added review";
+          // add +5 points to user who added review
+          $stmt = NULL;
+          $query = "UPDATE users SET points = points + 5 WHERE id = ?";
+          $stmt = $mysqli->prepare($query);
+          $stmt->bind_param('i', $userid);
+          $stmt->execute();
         } else {
           echo "error occured";
         }

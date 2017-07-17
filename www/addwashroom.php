@@ -21,30 +21,50 @@
       $description = $_POST['description'];
       $gender = $_POST['gender'];
       $rating = NULL;
+      if ($room_num == '') {
+        $room_num = 0;
+      }
       $id = $building . $room_num;
 
       // define new washroom object
       // $washroom = new Washroom($latitude, $longitude, $building, $room_num, $description, $gender);
 
       // var_dump($washroom);
-      // TODO: check if washroom is already in database
-
-
-      // add washroom to database
-      $query = "
-        INSERT INTO `washrooms` (id, latitude, longitude, building, room_num, description, gender)
-        VALUES (?, ?, ?, ?, ?, ?, ?);
-      ";
-
+      // Check if washroom has already been added
+      $query = "SELECT COUNT(*) FROM washrooms WHERE id = ?";
       $stmt = $mysqli->prepare($query);
+      $stmt->bind_param('s', $id);
+      $stmt->execute();
+      $stmt->bind_result($result);
+      $stmt->fetch();
+      $stmt = NULL;
 
-      $stmt->bind_param('sddssss', $id, $latitude, $longitude, $building, $room_num, $description, $gender);
-
-      if ($stmt->execute()) {
-        echo 'successfully added washroom';
-      } else {
-        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+      if ($result) {
+        echo "Washroom has already been added";
       }
+      else
+      {
+        // add washroom to database
+        $query = "
+          INSERT INTO `washrooms` (id, latitude, longitude, building, room_num, description, gender)
+          VALUES (?, ?, ?, ?, ?, ?, ?);
+        ";
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param('sddssss', $id, $latitude, $longitude, $building, $room_num, $description, $gender);
+
+        if ($stmt->execute()) {
+          echo 'successfully added washroom';
+          // give user +10 points for adding washroom
+          $stmt = NULL;
+          $query = "UPDATE users SET points = points + 10 WHERE id = ?";
+          $stmt = $mysqli->prepare($query);
+          $stmt->bind_param('i', $userid);
+          $stmt->execute();
+        } else {
+          echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+      }
+
       $mysqli->close();
     ?>
 
