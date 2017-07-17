@@ -2,7 +2,7 @@
 // Function to obtain mysqli connection.
   function get_mysqli_conn()
   {
-    $dev_env = True;
+    $dev_env = False;
     $prod_env = False;
     if (!$dev_env) { $prod_env = True; }
     if ($dev_env) {
