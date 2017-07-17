@@ -28,6 +28,7 @@
       if(isset($_POST['latitude'])) {
         $currentLat = $_POST['latitude'];
         $currentLong = $_POST['longitude'];
+        $min_rtg = $_POST['min_rate'];
       }
       ?>
       <? echo "Your longitude: " . $currentLong . '<br>';
@@ -52,27 +53,24 @@
       // list all washrooms in the washrooms database in closest to farthest order
       $mysqli = get_mysqli_conn();
       $washrooms = array();
+      // retrieve washrooms
       $query = "
-        SELECT *, ROUND(AVG(rev.rating)) as avg_rtg
+        SELECT wash.latitude, wash.longitude, wash.building, wash.room_num,
+        wash.description, wash.gender, ROUND(AVG(rev.rating)) as avg_rtg
         FROM washrooms as wash
         LEFT JOIN reviews as rev
         on wash.id = rev.wid
         GROUP BY wash.id
-        LIMIT 5;
+        HAVING avg_rtg >= ?
+        LIMIT 10;
       ";
-      //store results
-      $results = $mysqli->query($query);
+      $stmt = $mysqli->prepare($query);
+      $stmt->bind_param('i', $min_rtg);
+      $stmt->execute();
+      $stmt->bind_result( $lat, $lng, $bld, $room, $desc, $gdr, $rtg);
       //loop through results and create washroom object
-      while ($row = $results->fetch_assoc()) {
-        $washroom = new Washroom(
-          $row['latitude'],
-          $row['longitude'],
-          $row['building'],
-          $row['room_num'],
-          $row['description'],
-          $row['gender'],
-          $row['avg_rtg']
-        );
+      while ($stmt->fetch()) {
+        $washroom = new Washroom($lat, $lng, $bld, $room, $desc, $gdr, $rtg );
         // var_dump($washroom);
         //calculate and set distance from current loc. to washroom
         $washroom->distance = getDistance(
