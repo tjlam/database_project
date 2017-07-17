@@ -57,13 +57,13 @@
         FROM washrooms as wash
         LEFT JOIN reviews as rev
         on wash.id = rev.wid
-        group by wash.id;
+        GROUP BY wash.id
+        LIMIT 5;
       ";
-
+      //store results
       $results = $mysqli->query($query);
-
+      //loop through results and create washroom object
       while ($row = $results->fetch_assoc()) {
-        // echo 'in loop';
         $washroom = new Washroom(
           $row['latitude'],
           $row['longitude'],
