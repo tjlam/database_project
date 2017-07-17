@@ -69,14 +69,16 @@
         $stmt->bind_result($user, $rating, $comment, $timestamp);
         //print review of washroom
         while ($stmt->fetch()) {
-          echo $user . $rating . $comment . $timestamp;
+          echo $timestamp ." | " . '<b>' . $user . '</b>' . " rated ". '<b>' . $rating . '/5 </b>' . '<br>' . $comment;
           echo '<br><hr class="my-3">';
         }
       } else {
         $rating = "No ratings yet";
-        echo $building . " " . $room_num . " " . $description . " " . $gender . " " . $rating;
-        echo '<br>';
-        echo '<p>Reviews: <a href = "newreview.php">Be the first to add a review!</a></p>';
+        echo '<b>Building: </b>'. $building . '<br>' . '<b>Room Number: </b>' . $room_num . '<br>' . '<b>Description: </b>' . $description . '<br>' . '<b>Gender: </b>' . $gender . '<br>' . '<b>Average Rating: </b>' . $rating ;
+        echo '<br><br>';
+        echo '<hr class="my-4">';
+
+        echo '<p><a href = "newreview.php">Be the first to add a review!</a></p>';
       }
     ?>
     <form class="add-review" action="newreview.php" method="post">

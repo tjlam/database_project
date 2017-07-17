@@ -107,7 +107,7 @@
       $mysqli->close();
     ?>
 
-    <a href="newwashroom.php"> Add a washroom </a>
+    <center><a href="newwashroom.php"> Add a washroom </a></center>
   </div>
   </div>
   </div>
