@@ -6,12 +6,12 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="main.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <title>YELP for Washrooms</title>
     <!-- jquery for ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <title>YELP for Washrooms</title>
   </head>
   <body>
     <script type="text/javascript">
@@ -55,6 +55,8 @@
           <form id="location" class="location" action="nearby.php" method="post">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
+            <label for="refine"> Refine your search, find washroom with rating >= </label>
+            <input id="refine" type="number" name="min_rate" value="0">
             <input type="submit" value="Find a washroom!">
           </form>
           </h1>
