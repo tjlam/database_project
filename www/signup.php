@@ -12,54 +12,57 @@ if (!isset($_POST['submitok'])):
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <title> New User Registration </title>
   <meta http-equiv="Content-Type"
     content="text/html; charset=iso-8859-1
 </head>
 <body>
+  <div class = "container">
+  <div class = "row justify-content-center">
+  <div class = "col-4">
+  <div class="jumbotron">
+    <center>
+    <img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
+    <h1 class="display-3">SIGN UP</h1>
+    </center>
+    <hr class="my-4">
+    <p class="lead">
+      <center>
+        <form method="post" action="">
+        <table>
 
-<h3>New User Registration Form</h3>
-<p><font color="orangered" size="+1"><tt><b>*</b></tt></font>
-   indicates a required field</p>
-<form method="post" action="">
-<table border="0" cellpadding="0" cellspacing="5">
-    <tr>
-        <td align="right">
-            <p>Username</p>
-        </td>
-        <td>
-            <input name="newid" type="text" maxlength="12" size="25" />
+          <tr>
+            <td align = "right"><header>Name:</header></td>
+            <td><input name="newname" type="text" maxlength="25" size="15" />
             <font color="orangered" size="+1"><tt><b>*</b></tt></font>
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <p>Full Name</p>
-        </td>
-        <td>
-            <input name="newname" type="text" maxlength="20" size="25" />
-            <font color="orangered" size="+1"><tt><b>*</b></tt></font>
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <p>Password</p>
-        </td>
-        <td>
-            <input name="newpass" type="password" maxlength="10" size="25" />
-            <font color="orangered" size="+1"><tt><b>*</b></tt></font>
-        </td>
-    </tr>
-    <tr>
-        <td align="right" colspan="2">
-            <hr noshade="noshade" />
-            <input type="reset" value="Reset Form" />
-            <input type="submit" name="submitok" value="   OK   " />
-        </td>
-    </tr>
-</table>
-</form>
+          </td>
+          </tr>
 
+        <tr>
+          <td align = "right"> <header>Username: </header></td>
+          <td>
+            <input name="newid" type="text" maxlength="12" size="15" />
+            <font color="orangered" size="+1"><tt><b>*</b></tt></font>
+        </td>
+        </tr>
+
+        <tr>
+          <td align = "right"> <header>Password: </header></td>
+          <td><input name="newpass" type="password" maxlength="10" size="15" />
+          <font color="orangered" size="+1"><tt><b>*</b></tt></font></td>
+        </tr>
+      </table>
+        <input type="submit" value="Log in" />
+      </center>
+      </form>
+    </p>
+  </div>
+   </div>
+ </div>
+  </div>
 </body>
 </html>
 

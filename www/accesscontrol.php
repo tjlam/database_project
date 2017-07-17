@@ -9,24 +9,53 @@ $pwd = isset($_POST['pwd']) ? $_POST['pwd'] : $_SESSION['pwd'];
 
 if(!isset($uid)) {
   ?>
+
   <!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title> Please Log In for Access </title>
+
+    <title> YELP for Washrooms - Login </title>
     <meta http-equiv="Content-Type"
       content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </head>
+
   <body>
-  <h1> Login Required </h1>
-  <p>You must log in to access this area of the site. If you are
-     not a registered user, <a href="signup.php">click here</a>
-     to sign up for instant access!</p>
-  <p><form method="post" action="">
-    User ID: <input type="text" name="uid" size="8" /><br />
-    Password: <input type="password" name="pwd" SIZE="8" /><br />
-    <input type="submit" value="Log in" />
-  </form></p>
+  <div class = "container">
+  <div class = "row justify-content-center">
+  <div class = "col-4">
+  <div class="jumbotron">
+    <center>
+    <img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
+    <h1 class="display-3">LOGIN</h1>
+    Are you new? <a href="signup.php">Sign up here!</a>
+    </center>
+    <hr class="my-4">
+    <p class="lead">
+      <center>
+        <form method="post" action="">
+        <table>
+        <tr>
+          <td align = "right"> <header>Username: </header></td>
+          <td><input type="text" name="uid" size="8" /></td>
+        </tr>
+
+        <tr>
+          <td align = "right"> <header>Password: </header></td>
+          <td><input type="password" name="pwd" SIZE="8" /></td>
+        </tr>
+      </table>
+        <input type="submit" value="Log in" />
+      </center>
+      </form>
+    </p>
+  </div>
+   </div>
+ </div>
+  </div>
   </body>
   </html>
   <?php
