@@ -1,6 +1,6 @@
-<!-- <?php
-  include_once 'accesscontrol.php';
-?> -->
+<?php
+    include_once 'accesscontrol.php';
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,23 +37,32 @@
       }
     </script>
 
+    <div class = "col">
+    <div class = "row justify-content-center">
     <div style= "display: block" id="all">
       <div class="jumbotron">
-        <h1 class="display-3">    <?php
-            echo "Welcome " , $username;
-            ?></h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <center><img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
+        <h1 class="display-3">SEARCH</h1></center>
+
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+
+        <h1 class="display-4">    <?php
+            echo "Hi " , $username , ",";
+            ?></h1>
+
         <p class="lead">
+          <h1>
           <form id="location" class="location" action="nearby.php" method="post">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
-            <input type="submit" value="Find me a washroom">
+            <input type="submit" value="Find a washroom!">
           </form>
+          </h1>
         </p>
       </div>
     </div>
+  </div>
+</div>
 
   </body>
 </html>

@@ -15,7 +15,7 @@ if (!isset($_POST['submitok'])):
   <link rel="stylesheet" type="text/css" href="main.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  <title> New User Registration </title>
+  <title> Sign Up - Yelp for Washrooms </title>
   <meta http-equiv="Content-Type"
     content="text/html; charset=iso-8859-1
 </head>
@@ -55,7 +55,7 @@ if (!isset($_POST['submitok'])):
           <font color="orangered" size="+1"><tt><b>*</b></tt></font></td>
         </tr>
       </table>
-        <input type="submit" value="Log in" />
+        <input type="submit" name="submitok" value="   Sign up!   " />
       </center>
       </form>
     </p>

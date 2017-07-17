@@ -7,10 +7,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Nearby Washrooms</title>
+    <title>Nearby - Yelp for Washrooms</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
+    <div class = "col">
+    <div class = "row justify-content-center">
+    <div class="jumbotron">
+      <center>
+      <img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
+      <h1 class="display-3">NEARBY</h1>
+      </center>
+      <hr class="my-4">
     <?php
       $currentLat = NULL;
       $currentLong = NULL;
@@ -18,10 +29,16 @@
         $currentLat = $_POST['latitude'];
         $currentLong = $_POST['longitude'];
       }
-      echo "Your longitude is: " . $currentLong . " and your latitude is: " . $currentLat;
-      echo '<br>' . "List of washrooms: " . '<br>';
-      //function calculates distance given two lat, long
-      function getDistance($lat1, $long1, $lat2, $long2) {
+      ?>
+      <? echo "Your longitude: " . $currentLong . '<br>';
+      echo "Your latitude: " . $currentLat;
+      ?>
+      <hr class="my-4">
+
+
+      <!-- function calculates distance given two lat, long -->
+
+      <?php function getDistance($lat1, $long1, $lat2, $long2) {
         $y1 = deg2rad($long1);
         $y2 = deg2rad($long2);
         $x1 = deg2rad($lat1);
@@ -81,13 +98,19 @@
         ?>
         <form class="see-reviews" action="review.php" method="post">
           <input type="hidden" name="wid" value=<?php echo $w->id ?>>
-          <input type="submit" value="see reviews">
+          <center><input type="submit" value="See Reviews"></center>
         </form>
+        <hr class="my-4">
         <?php
       }
 
       $mysqli->close();
     ?>
+
     <a href="newwashroom.php"> Add a washroom </a>
+  </div>
+  </div>
+  </div>
+  </div>
   </body>
 </html>

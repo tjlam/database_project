@@ -23,15 +23,16 @@
       if ($rating == NULL) {
         $this->rating = "No ratings yet";
       } else {
-        $this->rating = $rating;
+        $this->rating = $rating . "/5";
       }
     }
 
     //print washroom
     function print_washroom() {
-      return "id: " . $this->id . " distance: " . $this->distance .
-        " description: " . $this->description . " gender: " . $this->gender .
-        " rating: " . $this->rating . '<br>';
+      return '<b>Name: </b>' . $this->id . '<br>' . '<b>Distance: </b>' . $this->distance .
+        'm<br>' . '<b>Gender: </b>'. $this->gender . '<br>' . '<b>Description: </b>' . $this->description .
+        '<br>' . '<b>Rating: </b>' . $this->rating . '<br>';
+
     }
   }
 ?>
