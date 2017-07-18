@@ -85,6 +85,9 @@
       <input type="hidden" name="wid" value=<?php echo $wid ?>>
       <input type="submit" value="Add a Review">
     </form>
+    <hr class="my-4">
+
+  <a href = index.php><button type = "button">Home</button></a>
 
   </body>
 </html>

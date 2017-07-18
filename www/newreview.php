@@ -48,7 +48,12 @@
        </tr>
       </table>
       <br>
-         <center><a href = index.php><button type = "button">Home</button></a><input type="submit" value="  Submit  "></center>
+         <center>
+           <input type="submit" value="  Submit  "><br>
+           <hr class="my-4">
+
+         <a href = index.php><button type = "button">Home</button></a>
+       </center>
       </form>
 
 

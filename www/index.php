@@ -45,22 +45,23 @@
         <h1 class="display-3">SEARCH</h1></center>
 
         <hr class="my-4">
-
-        <h1 class="display-5">    <?php
+        <h1 class="display-4">    <?php
             echo "Hi " , $username , ",";
             ?></h1>
-
         <p class="lead">
-          <h1>
+          <center>
+
           <form id="location" class="location" action="nearby.php" method="post">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
-            <label for="refine"> Enter your gender M/F/U</label>
-            <input id="refine" type="text" name="gender" value="U">
-            <input type="submit" value="Find a washroom!">
+            <label for="refine"> Enter your gender M/F/U</label><br>
+            <input id="refine" type="text" name="gender" value="U" maxlength = 1 size = 1 text-center><br><br>
+            <h4><input type="submit" value="Find a washroom!"></h4>
           </form>
-          </h1>
+        </center>
         </p>
+
+
       </div>
     </div>
   </div>

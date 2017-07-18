@@ -53,5 +53,7 @@ footer {
   padding: 20px 0;
 }
 
-
+input [type=refine]{
+  text-align : center;
+}
 }

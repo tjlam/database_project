@@ -106,7 +106,9 @@
       $mysqli->close();
     ?>
 
-    <center><a href="newwashroom.php"><button type = "button"> Add a washroom </button></a><br><br>
+    <center><a href="newwashroom.php"><button type = "button"> Add a washroom </button></a><br>
+      <hr class="my-4">
+
     <a href = index.php><button type = "button">Home</button></a>
     </center>
   </div>

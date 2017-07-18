@@ -13,7 +13,7 @@
       $mysqli = new mysqli($dbhost, $dbuser, $dbpassword, $dbname);
     }
     if ($prod_env) {
-      $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+      $url = parse_url("mysql://b125c08244761a:bc51fa78@us-cdbr-iron-east-03.cleardb.net/heroku_75c2aa09bc6052d?reconnect=true");
       $dbhost = $url["host"];
       $dbuser = $url["user"];
       $dbpassword = $url["pass"];
