@@ -88,7 +88,7 @@
       $locations = array();
       //loop through results and create washroom object
       while ($stmt->fetch()) {
-        $washroom = new Washroom($id, $lat, $lng, $bld, $room, $desc, $gdr, $rtg );
+        $washroom = new Washroom($lat, $lng, $bld, $room, $desc, $gdr, $rtg );
         // var_dump($washroom);
         //calculate and set distance from current loc. to washroom
         $washroom->distance = getDistance(
@@ -164,11 +164,14 @@
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
       var infowindow = new google.maps.InfoWindow();
-      //populate map
+      //mark current location
+      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
       var currMark = new google.maps.Marker({
         position: new google.maps.LatLng(lat, lng),
-        map: map
+        map: map,
+        icon: image
       });
+      //populate the map
       var marker, i;
       for (i = 0; i < locations.length; i++) {
         marker = new google.maps.Marker({
