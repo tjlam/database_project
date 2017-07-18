@@ -40,7 +40,7 @@
     <div class="jumbotron">
       <center>
       <img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
-      <h1 class="display-3">ADD A WASHROOM</h1>
+      <h1 class="display-3">ADD <br> WASHROOM</h1>
       </center>
       <hr class="my-4">
     <center>
