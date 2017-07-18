@@ -58,6 +58,7 @@
             <input id="refine" type="text" name="gender" value="U" maxlength = 1 size = 1 text-center><br><br>
             <h4><input type="submit" value="Find a washroom!"></h4>
           </form>
+          <a href="leaderboard.php">leaderboard</a>
         </center>
         </p>
 
