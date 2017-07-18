@@ -55,8 +55,8 @@
           <form id="location" class="location" action="nearby.php" method="post">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
-            <label for="refine"> Refine your search, find washroom with rating >= </label>
-            <input id="refine" type="number" name="min_rate" value="0">
+            <label for="refine"> Enter your gender M/F/U</label>
+            <input id="refine" type="text" name="gender" value="U">
             <input type="submit" value="Find a washroom!">
           </form>
           </h1>
