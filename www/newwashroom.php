@@ -66,7 +66,7 @@
       </tr>
 
       <tr>
-        <td align = "right"><header>Gender (M/F/O): </header></td>
+        <td align = "right"><header>Gender (M/F/U): </header></td>
         <td><input id="gender" type="text" name="gender" value=""></td>
       </tr>
       </table>
