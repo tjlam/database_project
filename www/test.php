@@ -19,50 +19,60 @@
     </style>
   </head>
   <body>
-    <div id="map" style="width: 500px; height: 400px;"></div>
+    <div id="map"></div>
+    <?php
+      include_once 'connect.php';
 
-    <script type="text/javascript">
+      $mysqli = get_mysqli_conn();
 
-      //use html5 to get location
+      $query = "SELECT id, latitude, longitude FROM washrooms";
+      $stmt = $mysqli->prepare($query);
+      $stmt->execute();
+      $stmt->bind_result($wid, $latitude, $longitude);
+      $locations = array();
+      while ($stmt->fetch()) {
+        array_push($locations, (array($wid, $latitude, $longitude)));
+      }
+      $myJSON = json_encode($locations);
+      // var_dump($myJSON);
+    ?>
+
+    <script>
       var lat,lng;
+      // Try HTML5 geolocation.
       getLocation();
       function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
-            // initMap();
         } else {
             alert("Geolocation is not supported by this browser.");
         }
       }
+
       function showPosition(position) {
         lat = position.coords.latitude;
         lng = position.coords.longitude;
         console.log(lat);
-        initMap();
+        console.log(lng);
+        plotLocation();
       }
 
-      //create map
-      function initMap() {
-        var locations = [
-          ['Bondi Beach', -33.890542, 151.274856],
-          ['Coogee Beach', -33.923036, 151.259052],
-          ['Cronulla Beach', -34.028249, 151.157507],
-          ['Manly Beach', -33.80010128657071, 151.28747820854187],
-          ['Maroubra Beach', -33.950198, 151.259302]
-        ];
+      var plotLocation = function() {
+        //import php locations array
+        var locations = JSON.parse('<?php echo $myJSON ;?>');
+        //create map
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: new google.maps.LatLng(-33.92, 151.25),
+          zoom: 15,
+          center: new google.maps.LatLng(lat, lng),
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-
         var infowindow = new google.maps.InfoWindow();
-
+        //populate map
         var marker, i;
 
         for (i = 0; i < locations.length; i++) {
           marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            position: new google.maps.LatLng(locations[i][2], locations[i][1]),
             map: map
           });
 
