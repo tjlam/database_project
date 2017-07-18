@@ -51,7 +51,7 @@
         <p class="lead">
           <center>
 
-          <form id="location" class="location" action="nearby.php" method="post">
+          <form id="location" class="location" action="nearby.php" method="get">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
             <label for="refine"> Enter your gender M/F/U</label><br>

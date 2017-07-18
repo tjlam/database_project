@@ -22,7 +22,7 @@
 
 
     <?php
-      $wid = $_POST['wid'];
+      $wid = $_GET['wid'];
       $mysqli = get_mysqli_conn();
 ?>
 
@@ -81,7 +81,7 @@
         echo '<p><a href = "newreview.php">Be the first to add a review!</a></p>';
       }
     ?>
-    <form class="add-review" action="newreview.php" method="post">
+    <form class="add-review" action="newreview.php" method="get">
       <input type="hidden" name="wid" value=<?php echo $wid ?>>
       <input type="submit" value="Add a Review">
     </form>

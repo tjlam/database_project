@@ -21,7 +21,7 @@
 
 
     <?php
-      $wid = $_POST['wid'];
+      $wid = $_GET['wid'];
       //display form if no rating,comment has been posted
       if (!(isset($_POST['rating']) and isset($_POST['comment']))) {
         echo "Washroom: " . $wid;
