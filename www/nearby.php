@@ -29,6 +29,7 @@
         $currentLat = $_POST['latitude'];
         $currentLong = $_POST['longitude'];
         $min_rtg = $_POST['min_rate'];
+        $gdr = $_POST['gender'];
       }
       ?>
       <? echo "Your longitude: " . $currentLong . '<br>';
@@ -61,11 +62,11 @@
         LEFT JOIN reviews as rev
         on wash.id = rev.wid
         GROUP BY wash.id
-        HAVING avg_rtg >= ?
+        HAVING gender = ?
         LIMIT 10;
       ";
       $stmt = $mysqli->prepare($query);
-      $stmt->bind_param('i', $min_rtg);
+      $stmt->bind_param('s', $gdr);
       $stmt->execute();
       $stmt->bind_result( $lat, $lng, $bld, $room, $desc, $gdr, $rtg);
       //loop through results and create washroom object
