@@ -81,6 +81,7 @@
         echo '<p><a href = "newreview.php">Be the first to add a review!</a></p>';
       }
     ?>
+    <a target="_blank" href="https://www.google.com/maps/dir/Current+Location/<?php echo $long . "," . $lat; ?>"> Get Directions </a>
     <form class="add-review" action="newreview.php" method="get">
       <input type="hidden" name="wid" value=<?php echo $wid ?>>
       <input type="submit" value="Add a Review">
