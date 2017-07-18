@@ -28,7 +28,6 @@
       if(isset($_POST['latitude'])) {
         $currentLat = $_POST['latitude'];
         $currentLong = $_POST['longitude'];
-        $min_rtg = $_POST['min_rate'];
         $gdr = $_POST['gender'];
       }
       ?>
@@ -68,7 +67,7 @@
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('s', $gdr);
       $stmt->execute();
-      $stmt->bind_result( $lat, $lng, $bld, $room, $desc, $gdr, $rtg);
+      $stmt->bind_result($lat, $lng, $bld, $room, $desc, $gdr, $rtg);
       //loop through results and create washroom object
       while ($stmt->fetch()) {
         $washroom = new Washroom($lat, $lng, $bld, $room, $desc, $gdr, $rtg );
@@ -77,8 +76,8 @@
         $washroom->distance = getDistance(
           $currentLat,
           $currentLong,
-          $row['latitude'],
-          $row['longitude']
+          $lat,
+          $lng
         );
         // echo $washroom->distance;
         $washrooms[] = $washroom;
