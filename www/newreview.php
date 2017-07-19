@@ -21,7 +21,7 @@
 
 
     <?php
-      $wid = $_GET['wid'];
+      $wid = $_POST['wid'];
       //display form if no rating,comment has been posted
       if (!(isset($_POST['rating']) and isset($_POST['comment']))) {
         echo "Washroom: " . $wid;
@@ -67,6 +67,7 @@
         $comment = $_POST['comment'];
         $rating = $_POST['rating'];
         $wid = $_POST['wid'];
+        // echo $wid;
         // echo $comment . $rating . $wid;
         $mysqli = get_mysqli_conn();
         $query = "INSERT INTO reviews (wid, uid, rating, comment)

@@ -78,12 +78,12 @@
         echo '<br><br>';
         echo '<hr class="my-4">';
 
-        echo '<p><a href = "newreview.php">Be the first to add a review!</a></p>';
+        // echo '<p><a href = "newreview.php">Be the first to add a review!</a></p>';
       }
     ?>
 
     <a target="_blank" href="https://www.google.com/maps/dir/Current+Location/<?php echo $long . "," . $lat; ?>"> Get Directions </a><br><br>
-    <form class="add-review" action="newreview.php" method="get">
+    <form class="add-review" action="newreview.php" method="post">
       <input type="hidden" name="wid" value=<?php echo $wid ?>>
       <input type="submit" value="Add a Review">
     </form>
