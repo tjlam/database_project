@@ -5,7 +5,6 @@ include_once "connect.php";
 
 if (!isset($_POST['submitok'])):
     // Display the user signup form
-    // echo 'kevin is a fegit';
     // echo $_POST['submitok'];
     ?>
 <!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Transitional//EN"

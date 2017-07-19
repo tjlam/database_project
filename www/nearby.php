@@ -17,21 +17,23 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 50%;
-        width: 50%;
+        height: 700px;
+        width: 80%;
+
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
-        padding: 0;
+        padding: 10px;
+
       }
 
     </style>
   </head>
   <body>
-    <div class = "col">
     <div class = "row justify-content-center">
+    <div class = "col-4">
     <div class="jumbotron">
       <center>
       <img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
@@ -134,9 +136,12 @@
     </center>
   </div>
   </div>
+  <div class = "col-8">
+      <center><div id="map"></div></center>
   </div>
   </div>
-  <div id="map"></div>
+  </div>
+
 
   <script>
     var lat,lng;

@@ -75,7 +75,8 @@
         $stmt = $mysqli->prepare($query);
         $stmt->bind_param('siis', $wid, $userid, $rating, $comment);
         if ($stmt->execute()) {
-          echo "Successfully added review!";
+          echo 'Successfully added review!<br>';
+          echo "Thanks :)";
           // add +5 points to user who added review
           $stmt = NULL;
           $query = "UPDATE users SET points = points + 5 WHERE id = ?";

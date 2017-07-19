@@ -14,6 +14,7 @@
     <title>YELP for Washrooms</title>
   </head>
   <body>
+
     <script type="text/javascript">
       getLocation();
       window.onload = function () {
@@ -42,22 +43,26 @@
     <div style= "display: block" id="all">
       <div class="jumbotron">
         <center><img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
-        <h1 class="display-3">SEARCH</h1></center>
+        <h1 class="display-3">SEARCH</h1>
 
         <hr class="my-4">
-        <h1 class="display-4">    <?php
-            echo "Hi " , $username , ",";
+        <h1 class="display-5">    <?php
+            echo "Hi " , $username ;
             ?></h1>
         <p class="lead">
-          <center>
+
 
           <form id="location" class="location" action="nearby.php" method="post">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
-            <label for="refine"> Enter your gender M/F/U</label><br>
-            <input id="refine" type="text" name="gender" value="U" maxlength = 1 size = 1 text-center><br><br>
-            <h4><input type="submit" value="Find a washroom!"></h4>
+            <H5><label for="refine"> What washroom are you looking for?</label><br></h5>
+             <p><b>M</b> - Male, <b>F</b> - Female, <b>U</b> - Unisex </p>
+            <input id="refine" type="text" name="gender" value="" maxlength = 1 size = 1 text-center><br><br>
+            <h4><input type="submit" name="submitok" value="Find a washroom!"></h4>
           </form>
+          <hr class="my-4">
+          <img src = "https://maxcdn.icons8.com/Share/icon/Sports//trophy1600.png" height =50px width = auto><br><br>
+        <a href = leaderboard.php><button type = "button">Leaderboard</button></a>
         </center>
         </p>
 

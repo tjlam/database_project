@@ -21,7 +21,7 @@
       <h1 class="display-3">ADD <br> WASHROOM</h1>
       </center>
       <hr class="my-4">
-
+      <center>
     <?php
       $mysqli = get_mysqli_conn();
 
@@ -65,7 +65,8 @@
         $stmt->bind_param('sddssss', $id, $latitude, $longitude, $building, $room_num, $description, $gender);
 
         if ($stmt->execute()) {
-          echo 'successfully added washroom';
+          echo 'Successfully added washroom!<br>';
+          echo "Thanks :)";
           // give user +10 points for adding washroom
           $stmt = NULL;
           $query = "UPDATE users SET points = points + 10 WHERE id = ?";
@@ -80,7 +81,8 @@
       $mysqli->close();
     ?>
 
-    <h1><a href="index.php"> Return Home </a></h1>
+    <h2><a href="index.php"> Return Home </a></h2>
+    </center>
   </div>
 </div>
 </div>
