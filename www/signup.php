@@ -112,15 +112,31 @@ else:
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-      <title> Registration Complete </title>
+      <title> Registration Complete - Yelp for Washrooms</title>
       <meta http-equiv="Content-Type"
         content="text/html; charset=iso-8859-1" />
+        <link rel="stylesheet" type="text/css" href="main.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </head>
     <body>
+      <div class = "container">
+      <div class = "row justify-content-center">
+      <div class = "col-4">
+      <div class="jumbotron">
+        <center>
+        <img src="https://vignette2.wikia.nocookie.net/tfbnebs/images/d/d5/Toilet.png/revision/latest?cb=20140712011831" height = 100px width = auto>
+        <h1 class="display-3">SIGN UP</h1>
+        </center>
+        <hr class="my-4">
     <p><strong>User registration successful!</strong></p>
     <p>To log in,
        click <a href="index.php">here</a> to return to the login
-       page, and enter your new personal userid and password.</p>
+       page, and enter your username and password.</p>
+     </div>
+   </div>
+ </div>
+ </div>
     </body>
     </html>
     <?php
