@@ -52,7 +52,7 @@
         <p class="lead">
 
 
-          <form id="location" class="location" action="nearby.php" method="post">
+          <form id="location" class="location" action="nearby.php" method="get">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
             <H5><label for="refine"> What washroom are you looking for?</label><br></h5>

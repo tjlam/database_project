@@ -43,10 +43,10 @@
     <?php
       $currentLat = NULL;
       $currentLong = NULL;
-      if(isset($_POST['latitude'])) {
-        $currentLat = $_POST['latitude'];
-        $currentLong = $_POST['longitude'];
-        $gdr = $_POST['gender'];
+      if(isset($_GET['latitude'])) {
+        $currentLat = $_GET['latitude'];
+        $currentLong = $_GET['longitude'];
+        $gdr = $_GET['gender'];
       }
       ?>
       <? echo "Your longitude: " . $currentLong . '<br>';
@@ -118,7 +118,7 @@
       foreach ($washrooms as $w) {
         echo  $w->print_washroom();
         ?>
-        <form class="see-reviews" action="review.php" method="post">
+        <form class="see-reviews" action="review.php" method="get">
           <input type="hidden" name="wid" value=<?php echo $w->id ?>>
           <center><input type="submit" value="See Reviews"></center>
         </form>
