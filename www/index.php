@@ -16,9 +16,19 @@
   <body>
 
     <script type="text/javascript">
+
+      function validateForm() {
+        var gdr = document.getElementById("refine").value.toLowerCase();
+        if (gdr == 'u' || gdr == 'f' || gdr == 'm') {
+          return true;
+        }
+        alert("Please enter a gender");
+        return true;
+      }
+
       getLocation();
       window.onload = function () {
-        document.getElementById("all").style.display = "none";
+        document.getElementById("submit-btn").disabled = true;
       }
 
       function getLocation() {
@@ -32,7 +42,7 @@
       function showPosition(position) {
         var lo = document.getElementById('long');
         var la = document.getElementById('lat');
-        document.getElementById("all").style.display = "block";
+        document.getElementById("submit-btn").disabled = false;
         lo.value = position.coords.latitude;
         la.value = position.coords.longitude;
       }
@@ -52,13 +62,13 @@
         <p class="lead">
 
 
-          <form id="location" class="location" action="nearby.php" method="get">
+          <form id="location" class="location" action="nearby.php" onsubmit="return validateForm()" method="get">
             <input id="long" type="hidden" name="longitude" value="">
             <input id="lat" type="hidden" name="latitude" value="">
             <H5><label for="refine"> What washroom are you looking for?</label><br></h5>
              <p><b>M</b> - Male, <b>F</b> - Female, <b>U</b> - Unisex </p>
             <input id="refine" type="text" name="gender" value="" maxlength = 1 size = 1 text-center><br><br>
-            <h4><input type="submit" name="submitok" value="Find a washroom!"></h4>
+            <h4><input id="submit-btn" type="submit" name="submitok" value="Find a washroom!"></h4>
           </form>
           <hr class="my-4">
           <img src = "https://maxcdn.icons8.com/Share/icon/Sports//trophy1600.png" height =50px width = auto><br><br>
